@@ -43,43 +43,29 @@ const services: ServiceData[] = [
 
 const Services: React.FC = () => {
   return (
-    <section className="bg-[#004D40] pt-28 pb-32 relative overflow-hidden">
-       {/* Watermark Background - Large stylized logo outlines */}
-       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Center/Right large watermark */}
-          <svg className="absolute top-0 right-0 h-[150%] w-auto translate-x-1/3 -translate-y-1/4 opacity-5" viewBox="0 0 500 500" fill="none">
-             <path d="M250 50 C 250 50 350 200 250 350 C 150 200 250 50 250 50" stroke="white" strokeWidth="2" />
-             <path d="M250 50 C 250 50 450 150 350 350" stroke="white" strokeWidth="2" />
-             <path d="M250 50 C 250 50 50 150 150 350" stroke="white" strokeWidth="2" />
-             <circle cx="250" cy="250" r="200" stroke="white" strokeWidth="2" />
-          </svg>
-          
-          {/* Left large watermark */}
-          <svg className="absolute bottom-0 left-0 h-[120%] w-auto -translate-x-1/4 translate-y-1/4 opacity-5" viewBox="0 0 500 500" fill="none">
-             <circle cx="250" cy="250" r="220" stroke="white" strokeWidth="3" />
-             <path d="M250 30 V 470" stroke="white" strokeWidth="3" />
-             <path d="M30 250 H 470" stroke="white" strokeWidth="3" />
-          </svg>
+    <section className="bg-[#004D40] pt-24 pb-32 relative overflow-hidden">
+       {/* Background Pattern / Watermark */}
+       <div className="absolute inset-0 pointer-events-none">
+           <svg className="absolute top-0 left-0 w-full h-full opacity-10" viewBox="0 0 1440 800" preserveAspectRatio="none">
+               {/* Abstract leaf/logo curves based on design */}
+               <path d="M-100,600 C200,400 500,800 800,400 C1100,0 1400,400 1600,200" stroke="white" strokeWidth="1" fill="none"/>
+               <path d="M-100,700 C200,500 500,900 800,500 C1100,100 1400,500 1600,300" stroke="white" strokeWidth="1" fill="none"/>
+               <circle cx="720" cy="400" r="300" stroke="white" strokeWidth="0.5" fill="none" />
+               <path d="M720,100 L720,700" stroke="white" strokeWidth="0.5" />
+           </svg>
        </div>
 
       <div className="container mx-auto px-4 md:px-8 relative z-10">
-        {/* Section Header */}
-        <div className="flex flex-col md:flex-row items-baseline justify-between mb-16">
-             <motion.div 
-               initial={{ opacity: 0, x: -20 }}
-               whileInView={{ opacity: 1, x: 0 }}
-               viewport={{ once: true }}
-               className="relative"
-             >
-                <h2 className="text-white font-sans text-2xl md:text-3xl font-medium tracking-wide pb-4">
-                  Lĩnh vực hoạt động
-                </h2>
-                {/* Decorative line extending right */}
-                <div className="absolute bottom-0 left-0 w-[150%] h-px bg-white/20"></div>
-             </motion.div>
+        
+        {/* Header */}
+        <div className="mb-12 relative">
+           <h2 className="text-white font-sans text-3xl md:text-4xl font-medium inline-block relative pb-4">
+             Lĩnh vực hoạt động
+             <span className="absolute bottom-0 left-0 w-[60%] h-px bg-white/40"></span>
+           </h2>
         </div>
 
-        {/* Cards Grid */}
+        {/* Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((item, index) => (
             <motion.div
@@ -90,44 +76,39 @@ const Services: React.FC = () => {
               viewport={{ once: true }}
               className="group flex flex-col h-full cursor-pointer"
             >
-              {/* Image Top */}
-              <div className="h-56 w-full overflow-hidden relative">
+              {/* Image */}
+              <div className="h-64 w-full overflow-hidden relative">
                 <img 
                   src={item.image} 
                   alt={`${item.titlePart1} ${item.titlePart2}`} 
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                 />
-                {/* Overlay on hover */}
-                <div className="absolute inset-0 bg-[#00332A]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
               </div>
               
-              {/* Content Bottom */}
-              <div className="flex-1 flex flex-col px-6 py-8 min-h-[320px] transition-all duration-300 bg-[#C4A980] group-hover:bg-[#00332A] relative">
+              {/* Content */}
+              <div className="flex-1 flex flex-col p-6 transition-colors duration-300 bg-[#C4A980] group-hover:bg-[#00332A] min-h-[340px]">
                 
-                {/* Title Area */}
-                <div className="mb-4">
-                  <h3 className="font-bold text-xl uppercase leading-none mb-2">
-                     <span className="text-white transition-colors duration-300">{item.titlePart1} </span>
-                     <span className="text-[#004D40] group-hover:text-[#C4A980] transition-colors duration-300">{item.titlePart2}</span>
-                  </h3>
-                  <h4 className="font-bold text-[11px] uppercase tracking-widest text-[#004D40] group-hover:text-[#C4A980] transition-colors duration-300">
-                    {item.subtitle}
-                  </h4>
+                {/* Title Block */}
+                <div className="mb-4 min-h-[60px]">
+                    <div className="text-xl font-bold uppercase leading-tight mb-2">
+                        <span className="text-white">{item.titlePart1} </span>
+                        <span className="text-[#004D40] group-hover:text-[#C4A980] transition-colors duration-300">{item.titlePart2}</span>
+                    </div>
+                    <div className="text-[11px] font-bold uppercase tracking-wider text-[#004D40] group-hover:text-[#C4A980] transition-colors duration-300">
+                        {item.subtitle}
+                    </div>
                 </div>
 
-                {/* Divider (Optional, invisible spacer) */}
-                <div className="h-2"></div>
-
                 {/* Description */}
-                <p className="text-xs leading-relaxed mb-8 line-clamp-5 text-justify text-white group-hover:text-gray-300 transition-colors duration-300">
-                  {item.description}
+                <p className="text-xs leading-relaxed text-justify text-white/90 mb-6 line-clamp-6 flex-1">
+                   {item.description}
                 </p>
                 
-                {/* Button - Pushed to bottom */}
+                {/* Button */}
                 <div className="mt-auto">
-                    <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider px-5 py-2.5 rounded-sm transition-all duration-300 bg-white text-[#004D40] group-hover:bg-[#C4A980] group-hover:text-white">
-                      Xem thêm
-                      <ArrowUpRight size={14} />
+                    <button className="flex items-center gap-2 text-[10px] font-bold uppercase tracking-wider px-4 py-2 rounded-sm bg-white text-[#004D40] group-hover:bg-[#E8E8E8] group-hover:text-[#004D40] transition-all">
+                        Xem thêm
+                        <ArrowUpRight size={14} />
                     </button>
                 </div>
               </div>
