@@ -27,7 +27,7 @@ const App: React.FC = () => {
   }, [scrolled]);
 
   return (
-    <div className="font-sans text-gray-800 antialiased overflow-x-hidden w-full">
+    <div className="font-sans text-gray-800 antialiased overflow-x-hidden w-full bg-white">
       <Header scrolled={scrolled} />
       <main>
         <Hero />
