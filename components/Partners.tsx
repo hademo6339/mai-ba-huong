@@ -1,21 +1,91 @@
 import React from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
-// Placeholder logos with simple shapes
-const PartnerLogo = ({ id }: { id: number }) => (
-  <div className="w-full h-full flex items-center justify-center opacity-60 hover:opacity-100 transition-all duration-300 grayscale hover:grayscale-0 group">
-     {/* Abstract shape to simulate logo */}
-     <div className="flex flex-col items-center gap-2">
-         <svg width="40" height="40" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg" className="text-gray-800 group-hover:text-primary">
-            {id % 4 === 0 && <rect x="10" y="10" width="40" height="40" rx="2" stroke="currentColor" strokeWidth="3" />}
-            {id % 4 === 1 && <circle cx="30" cy="30" r="20" stroke="currentColor" strokeWidth="3" />}
-            {id % 4 === 2 && <path d="M30 10L50 50H10L30 10Z" stroke="currentColor" strokeWidth="3" />}
-            {id % 4 === 3 && <path d="M10 30L30 10L50 30L30 50L10 30Z" stroke="currentColor" strokeWidth="3" />}
-         </svg>
-         <span className="text-[8px] font-bold uppercase tracking-wider text-gray-500 group-hover:text-primary">Company</span>
-     </div>
-  </div>
-);
+// Define specific logos to look like real partners (Banks, Construction, Design, etc.)
+const partners = [
+  {
+    id: 1,
+    name: "Vietcombank",
+    logo: (
+      <svg viewBox="0 0 100 30" className="h-8 w-auto fill-current">
+        <path d="M15 15 L25 25 L35 15 L25 5 Z" />
+        <text x="40" y="20" fontFamily="sans-serif" fontSize="14" fontWeight="bold" letterSpacing="1">V-BANK</text>
+      </svg>
+    )
+  },
+  {
+    id: 2,
+    name: "Hoa Binh Corp",
+    logo: (
+      <svg viewBox="0 0 100 30" className="h-9 w-auto fill-current">
+        <rect x="5" y="5" width="10" height="20" />
+        <rect x="18" y="10" width="10" height="15" />
+        <rect x="31" y="2" width="10" height="23" />
+        <text x="48" y="20" fontFamily="serif" fontSize="14" fontWeight="bold">HBC CORP</text>
+      </svg>
+    )
+  },
+  {
+    id: 3,
+    name: "Coteccons",
+    logo: (
+      <svg viewBox="0 0 100 30" className="h-8 w-auto fill-current">
+        <circle cx="15" cy="15" r="10" fill="none" stroke="currentColor" strokeWidth="4" />
+        <text x="35" y="20" fontFamily="sans-serif" fontSize="14" fontWeight="900">COTEC</text>
+      </svg>
+    )
+  },
+  {
+    id: 4,
+    name: "Savills",
+    logo: (
+      <svg viewBox="0 0 100 30" className="h-7 w-auto fill-current">
+        <path d="M10 25 L20 5 L30 25 M5 25 H35" fill="none" stroke="currentColor" strokeWidth="2" />
+        <text x="40" y="20" fontFamily="serif" fontSize="14" letterSpacing="2">SAVILLS</text>
+      </svg>
+    )
+  },
+  {
+    id: 5,
+    name: "CBRE",
+    logo: (
+      <svg viewBox="0 0 100 30" className="h-8 w-auto fill-current">
+        <path d="M10 15 Q20 5 30 15 T50 15" fill="none" stroke="currentColor" strokeWidth="3" />
+        <text x="55" y="21" fontFamily="sans-serif" fontSize="15" fontWeight="bold">CBRE</text>
+      </svg>
+    )
+  },
+  {
+    id: 6,
+    name: "Archetype",
+    logo: (
+      <svg viewBox="0 0 100 30" className="h-8 w-auto fill-current">
+        <path d="M10 5 L10 25 M10 5 L30 5 M10 15 L25 15" stroke="currentColor" strokeWidth="3" fill="none"/>
+        <text x="35" y="20" fontFamily="sans-serif" fontSize="12" fontWeight="bold" letterSpacing="1">ARCHETYPE</text>
+      </svg>
+    )
+  },
+  {
+    id: 7,
+    name: "Nam Long",
+    logo: (
+      <svg viewBox="0 0 120 30" className="h-8 w-auto fill-current">
+        <path d="M15 25 C 5 25, 5 5, 15 5 C 25 5, 25 25, 15 25 Z M 22 5 L 35 25 L 48 5" fill="none" stroke="currentColor" strokeWidth="2" />
+        <text x="55" y="20" fontFamily="sans-serif" fontSize="13" fontWeight="bold">NAM LONG</text>
+      </svg>
+    )
+  },
+  {
+    id: 8,
+    name: "Hung Thinh",
+    logo: (
+      <svg viewBox="0 0 120 30" className="h-8 w-auto fill-current">
+        <path d="M10 5 H30 M20 5 V25" stroke="currentColor" strokeWidth="3" />
+        <text x="35" y="20" fontFamily="serif" fontSize="13" fontWeight="bold" letterSpacing="1">HUNG THINH</text>
+      </svg>
+    )
+  }
+];
 
 const Partners: React.FC = () => {
   return (
@@ -26,32 +96,38 @@ const Partners: React.FC = () => {
                 <div className="w-full md:w-1/3 relative flex gap-6">
                     <div className="w-8 pt-2 border-r border-gray-200 pr-6">
                         <span className="writing-vertical text-[11px] uppercase tracking-[0.2em] text-primary font-bold rotate-180 whitespace-nowrap">
-                            Đối tác
+                            Đối tác chiến lược
                         </span>
                     </div>
                     
                     <div className="flex-1 pt-2">
+                        <h3 className="text-2xl font-serif font-bold text-primary mb-4">HỢP TÁC PHÁT TRIỂN</h3>
                         <p className="text-gray-600 text-justify leading-relaxed mb-10 text-sm">
-                            Có rất nhiều biến thể của Lorem Ipsum mà bạn có thể tìm thấy, nhưng đa số được biến đổi bằng cách thêm các yếu tố hài hước, các từ ngẫu nhiên có khi không có vẻ gì là có ý nghĩa. Nếu bạn định sử dụng một đoạn.
+                            Chúng tôi tự hào đồng hành cùng những đối tác uy tín hàng đầu trong và ngoài nước trên các lĩnh vực: Tài chính, Xây dựng, Thiết kế, và Quản lý vận hành. Sự hợp tác chặt chẽ này là nền tảng vững chắc để Mai Bá Hương kiến tạo nên những giá trị bền vững và đẳng cấp.
                         </p>
                         
                         <div className="flex gap-4">
-                            <button className="w-10 h-10 border border-gray-300 flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-colors rounded-full hover:bg-white">
-                                <ArrowLeft size={18} strokeWidth={1} />
+                            <button className="w-10 h-10 border border-gray-300 flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-colors rounded-full hover:bg-white bg-white shadow-sm">
+                                <ArrowLeft size={18} strokeWidth={1.5} />
                             </button>
-                            <button className="w-10 h-10 border border-gray-300 flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-colors rounded-full hover:bg-white">
-                                <ArrowRight size={18} strokeWidth={1} />
+                            <button className="w-10 h-10 border border-gray-300 flex items-center justify-center text-gray-400 hover:border-accent hover:text-accent transition-colors rounded-full hover:bg-white bg-white shadow-sm">
+                                <ArrowRight size={18} strokeWidth={1.5} />
                             </button>
                         </div>
                     </div>
                 </div>
 
                 {/* Right Grid */}
-                <div className="w-full md:w-2/3 border-t border-l border-gray-200 bg-white">
-                    <div className="grid grid-cols-2 md:grid-cols-4">
-                        {[0, 1, 2, 3, 4, 5, 6, 7].map((id) => (
-                            <div key={id} className="h-32 border-r border-b border-gray-200 hover:shadow-lg transition-all p-4 flex items-center justify-center hover:z-10 relative">
-                                <PartnerLogo id={id} />
+                <div className="w-full md:w-2/3 border border-gray-100 bg-white shadow-sm">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y divide-gray-100">
+                        {partners.map((partner) => (
+                            <div 
+                                key={partner.id} 
+                                className="h-32 p-6 flex items-center justify-center group relative transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,0,0,0.05)] hover:z-10 bg-white"
+                            >
+                                <div className="text-gray-400 group-hover:text-primary transition-colors duration-300 transform group-hover:scale-110">
+                                    {partner.logo}
+                                </div>
                             </div>
                         ))}
                     </div>
