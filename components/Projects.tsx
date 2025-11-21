@@ -32,15 +32,18 @@ const projects: ProjectItem[] = [
 
 const Projects: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isPaused, setIsPaused] = useState(false);
 
   // Auto-play logic
   useEffect(() => {
+    if (isPaused) return;
+
     const timer = setInterval(() => {
       nextProject();
-    }, 6000); // Change slide every 6 seconds
+    }, 5000); // Change slide every 5 seconds
 
     return () => clearInterval(timer);
-  }, [currentIndex]); // Re-run effect when index changes to reset timer
+  }, [currentIndex, isPaused]);
 
   const nextProject = () => {
     setCurrentIndex((prev) => (prev + 1) % projects.length);
@@ -55,13 +58,18 @@ const Projects: React.FC = () => {
       <div className="container mx-auto px-4 md:px-8 flex gap-8">
         
         {/* Project Content Area */}
-        <div className="flex-1 relative">
+        <div 
+          className="flex-1 relative"
+          onMouseEnter={() => setIsPaused(true)}
+          onMouseLeave={() => setIsPaused(false)}
+        >
            {/* Main Layout: Image Left, Content Box Right Overlapping */}
            <div className="relative min-h-[500px] md:h-[650px] w-full flex flex-col md:block group">
              
-             {/* Project Image */}
-             <div className="w-full md:w-[75%] h-[400px] md:h-full overflow-hidden relative">
-               <AnimatePresence mode="wait">
+             {/* Project Image Container */}
+             <div className="w-full md:w-[75%] h-[400px] md:h-full overflow-hidden relative bg-gray-100">
+               {/* Removed mode="wait" to allow cross-fading of images */}
+               <AnimatePresence initial={false}>
                  <motion.img 
                    key={currentIndex}
                    initial={{ opacity: 0, scale: 1.1 }}
@@ -70,22 +78,22 @@ const Projects: React.FC = () => {
                    transition={{ duration: 1.2, ease: "easeOut" }}
                    src={projects[currentIndex].image} 
                    alt={projects[currentIndex].title} 
-                   className="w-full h-full object-cover"
+                   className="absolute inset-0 w-full h-full object-cover"
                  />
                </AnimatePresence>
                
                {/* Overlay gradient for better text visibility on mobile */}
-               <div className="absolute inset-0 bg-black/20 md:hidden"></div>
+               <div className="absolute inset-0 bg-black/20 md:hidden pointer-events-none z-10"></div>
              </div>
  
              {/* Content Box - Dark Green Overlay */}
              <AnimatePresence mode="wait">
                 <motion.div 
                   key={`info-${currentIndex}`}
-                  initial={{ opacity: 0, y: 40 }}
+                  initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
-                  transition={{ duration: 0.6, delay: 0.3 }}
+                  transition={{ duration: 0.5, delay: 0.1, ease: "easeOut" }}
                   className="relative md:absolute bottom-0 right-0 md:bottom-16 md:right-8 bg-[#004D40] w-full md:w-[500px] p-8 md:p-12 z-20 text-white shadow-2xl"
                 >
                   {/* Background pattern for card */}
@@ -124,27 +132,27 @@ const Projects: React.FC = () => {
            <div className="flex gap-6 mt-8 md:absolute md:bottom-0 md:left-[550px] md:translate-x-0 z-30">
              <button 
                onClick={prevProject}
-               className="w-12 h-12 border border-[#004D40]/20 flex items-center justify-center hover:bg-[#004D40] hover:text-white text-[#004D40] transition-all duration-300 rounded-full group"
+               className="w-12 h-12 border border-[#004D40]/20 flex items-center justify-center hover:bg-[#004D40] hover:text-white text-[#004D40] transition-all duration-300 rounded-full group bg-white"
                aria-label="Previous Project"
              >
                <ArrowLeft size={20} strokeWidth={1.5} className="group-hover:-translate-x-0.5 transition-transform"/>
              </button>
              <button 
                onClick={nextProject}
-               className="w-12 h-12 border border-[#004D40]/20 flex items-center justify-center hover:bg-[#004D40] hover:text-white text-[#004D40] transition-all duration-300 rounded-full group"
+               className="w-12 h-12 border border-[#004D40]/20 flex items-center justify-center hover:bg-[#004D40] hover:text-white text-[#004D40] transition-all duration-300 rounded-full group bg-white"
                aria-label="Next Project"
              >
                <ArrowRight size={20} strokeWidth={1.5} className="group-hover:translate-x-0.5 transition-transform"/>
              </button>
            </div>
            
-           {/* Slide Indicators */}
+           {/* Slide Indicators (Dots) */}
            <div className="hidden md:flex absolute top-1/2 -right-6 -translate-y-1/2 flex-col gap-3 z-30">
               {projects.map((_, idx) => (
                 <button
                   key={idx}
                   onClick={() => setCurrentIndex(idx)}
-                  className={`w-1.5 transition-all duration-300 rounded-full ${
+                  className={`w-1.5 transition-all duration-500 rounded-full ${
                     idx === currentIndex ? 'h-8 bg-[#004D40]' : 'h-1.5 bg-gray-300 hover:bg-[#C4A980]'
                   }`}
                 />
