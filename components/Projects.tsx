@@ -7,8 +7,8 @@ const projects: ProjectItem[] = [
   {
     id: 1,
     title: "KHU DÂN CƯ MAI BÁ HƯƠNG",
-    location: "146,8ha tại xã Lương Hòa, tỉnh Tây Ninh",
-    description: "Nằm ngay trên trục đường huyết mạch Hựu Thạnh Tân Bửu - 102m, Võ Văn Kiệt nối dài - 60m, Lương Hòa Bình Chánh - 60m - tuyến giao thông lớn nhất tỉnh, dự án sở hữu vị trí chiến lược, kết nối trực tiếp TP.HCM và các khu kinh tế trọng điểm phía Nam.",
+    location: "Xã Lương Hòa, Tỉnh Tây Ninh",
+    description: "Với quy mô 146,8ha, Dự án Khu dân cư Mai Bá Hương tọa lạc tại vị trí chiến lược xã Lương Hòa. Được quy hoạch đồng bộ, dự án hứa hẹn trở thành một khu đô thị kiểu mẫu, kết hợp hài hòa giữa không gian sống hiện đại và cảnh quan thiên nhiên, mang lại giá trị sống đích thực và cơ hội đầu tư sinh lời vượt trội.",
     image: "https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80",
     area: "146.8 ha"
   },
@@ -86,9 +86,13 @@ const Projects: React.FC = () => {
                 <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-[#C4A980] uppercase leading-tight">
                   {projects[currentIndex].title}
                 </h3>
-                <p className="text-[11px] font-bold mb-6 text-white uppercase tracking-wide border-b border-white/20 pb-4">
-                  {projects[currentIndex].location}
-                </p>
+                <div className="flex justify-between items-center border-b border-white/20 pb-4 mb-6">
+                    <p className="text-[11px] font-bold text-white uppercase tracking-wide">
+                    {projects[currentIndex].location}
+                    </p>
+                    <span className="text-[#C4A980] font-bold text-xs">{projects[currentIndex].area}</span>
+                </div>
+                
                 <p className="text-white/80 text-sm leading-relaxed mb-8 text-justify">
                   {projects[currentIndex].description}
                 </p>
