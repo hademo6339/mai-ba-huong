@@ -4,73 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mai Bá Hương - Kiến Tạo Tương Lai</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              sans: ['Manrope', 'sans-serif'],
-              serif: ['Playfair Display', 'serif'],
-            },
-            colors: {
-              primary: {
-                DEFAULT: '#004D40', // Dark Green from design
-                dark: '#00332A',    // Darker Green for Footer
-                light: '#00695C',
-              },
-              accent: {
-                DEFAULT: '#C4A980', // Gold/Beige from design
-                light: '#D4BFA0',
-                dark: '#A38B65',
-              },
-              gray: {
-                100: '#F5F5F5',
-                800: '#333333',
-                text: '#555555',
-              }
-            },
-            backgroundImage: {
-              'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-            }
-          }
-        }
-      }
-    </script>
-    <style>
-      /* Custom utilities */
-      .writing-vertical {
-        writing-mode: vertical-rl;
-        transform: rotate(180deg);
-      }
-      .hide-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .hide-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-      .text-justify-last-left {
-        text-align: justify;
-        text-align-last: left;
-      }
-    </style>
-  <script type="importmap">
-{
-  "imports": {
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.554.0",
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "framer-motion": "https://aistudiocdn.com/framer-motion@^12.23.24",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
-  }
-}
-</script>
 </head>
   <body>
     <div id="root"></div>
+    <script type="module" src="/index.tsx"></script>
   </body>
 </html>

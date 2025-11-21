@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Search, ChevronDown, Menu, X } from 'lucide-react';
 import { NavItem } from '../types';
+import LogoNgang from '../logo-ngang.png';
 
 interface HeaderProps {
   scrolled: boolean;
@@ -15,32 +16,6 @@ const navItems: NavItem[] = [
   { label: 'Liên hệ', href: '#lien-he' },
 ];
 
-const BrandLogo: React.FC<{ className?: string }> = ({ className }) => (
-    <svg width="280" height="60" viewBox="0 0 280 60" fill="none" xmlns="http://www.w3.org/2000/svg" className={className}>
-    {/* Icon / Monogram - Gold */}
-    <g transform="translate(0, 5)">
-       {/* Outer Circle */}
-       <circle cx="25" cy="25" r="24" stroke="#C4A980" strokeWidth="1.2"/>
-       
-       {/* Stylized Monogram (MBH Abstract) */}
-       <path d="M17 16V38" stroke="#C4A980" strokeWidth="1.5" strokeLinecap="round"/>
-       <path d="M33 16V38" stroke="#C4A980" strokeWidth="1.5" strokeLinecap="round"/>
-       <path d="M25 23V38" stroke="#C4A980" strokeWidth="1.5" strokeLinecap="round"/>
-       
-       {/* Arches/Curves */}
-       <path d="M17 16C17 16 21 23 25 23C29 23 33 16 33 16" stroke="#C4A980" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-    </g>
-
-    {/* Text */}
-    <g transform="translate(60, 12)">
-      {/* Main Name - Dark Green */}
-      <text x="0" y="22" fontFamily="Playfair Display" fontWeight="700" fontSize="22" fill="#004D40" letterSpacing="0.01em">MAI BÁ HƯƠNG</text>
-      {/* Slogan - Gold/Reddish small text */}
-      <text x="1" y="38" fontFamily="Manrope" fontSize="6.5" fontWeight="600" fill="#C4A980" letterSpacing="0.15em" textTransform="uppercase">KẾ THỪA DI SẢN - KIẾN TẠO TƯƠNG LAI</text>
-    </g>
-  </svg>
-);
-
 const Header: React.FC<HeaderProps> = ({ scrolled }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -51,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled }) => {
       <div className="container mx-auto px-4 md:px-8 h-full flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="flex items-center shrink-0">
-           <BrandLogo className="h-12 md:h-14 w-auto" />
+           <img src={LogoNgang} alt="Mai Bá Hương" className="h-10 md:h-12 w-auto object-contain" />
         </a>
 
         {/* Desktop Navigation */}

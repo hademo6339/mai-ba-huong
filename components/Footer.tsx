@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Phone, Mail, Globe, Facebook, Youtube, Instagram } from 'lucide-react';
+import IconLogo from '../IconLogo.png';
 
 const Footer: React.FC = () => {
   return (
@@ -61,20 +62,7 @@ const Footer: React.FC = () => {
           {/* Center: Logo */}
           <div className="w-full flex flex-col items-center justify-center text-center py-10 lg:py-0">
             <div className="mb-6">
-                <svg width="120" height="120" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-                   {/* Outer Circle */}
-                   <circle cx="30" cy="30" r="28" stroke="#C4A980" strokeWidth="1.5"/>
-                   
-                   {/* Stylized Monogram (MBH Abstract) */}
-                   <g transform="translate(5, 5)">
-                      <path d="M17 38V16" stroke="#C4A980" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M33 38V16" stroke="#C4A980" strokeWidth="1.5" strokeLinecap="round"/>
-                      <path d="M25 38V23" stroke="#C4A980" strokeWidth="1.5" strokeLinecap="round"/>
-                      
-                      {/* Connecting curves forming the M/B shape */}
-                      <path d="M17 16C17 16 21 23 25 23C29 23 33 16 33 16" stroke="#C4A980" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round"/>
-                   </g>
-                </svg>
+              <img src={IconLogo} alt="Biểu trưng Mai Bá Hương" className="h-24 w-24 object-contain" />
             </div>
             <h2 className="font-serif text-3xl font-bold text-white uppercase tracking-widest mb-2">MAI BÁ HƯƠNG</h2>
             <p className="text-[9px] uppercase tracking-[0.3em] text-[#C4A980] font-bold">KẾ THỪA DI SẢN - KIẾN TẠO TƯƠNG LAI</p>
