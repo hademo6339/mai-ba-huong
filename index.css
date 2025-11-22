@@ -9,6 +9,24 @@
 @import '@fontsource/playfair-display/600.css';
 @import '@fontsource/playfair-display/700.css';
 
+/* Vogun Font */
+@font-face {
+  font-family: 'Vogun';
+  src: url('/fonts/Vogun-Medium.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Vogun Font Styling */
+.font-vogun {
+  font-family: 'Vogun', serif;
+  font-feature-settings: 'liga' on, 'calt' on;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;

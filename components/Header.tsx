@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Search, ChevronDown, Menu, X } from 'lucide-react';
 import { NavItem } from '../types';
-import LogoNgang from '../logo-ngang.png';
+import LogoNgang from '../logo-ngang.svg';
 
 interface HeaderProps {
   scrolled: boolean;

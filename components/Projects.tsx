@@ -105,7 +105,7 @@ const Projects: React.FC = () => {
                   </div>
 
                   <div className="relative z-10">
-                    <h3 className="text-2xl md:text-3xl font-serif font-bold mb-4 text-[#C4A980] uppercase leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-vogun font-medium mb-4 text-[#C4A980] uppercase leading-tight tracking-wider">
                       {projects[currentIndex].title}
                     </h3>
                     <div className="flex justify-between items-center border-b border-white/20 pb-4 mb-6">

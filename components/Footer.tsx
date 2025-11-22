@@ -1,6 +1,6 @@
 import React from 'react';
 import { ArrowUpRight, Phone, Mail, Globe, Facebook, Youtube, Instagram } from 'lucide-react';
-import IconLogo from '../IconLogo.png';
+import IconLogo from '../IconLogo.svg';
 
 const Footer: React.FC = () => {
   return (
@@ -65,7 +65,7 @@ const Footer: React.FC = () => {
               <img src={IconLogo} alt="Biểu trưng Mai Bá Hương" className="h-24 w-24 object-contain" />
             </div>
             <h2 className="font-serif text-3xl font-bold text-white uppercase tracking-widest mb-2">MAI BÁ HƯƠNG</h2>
-            <p className="text-[9px] uppercase tracking-[0.3em] text-[#C4A980] font-bold">KẾ THỪA DI SẢN - KIẾN TẠO TƯƠNG LAI</p>
+            <p className="text-[9px] uppercase tracking-[0.3em] text-[#C4A980] font-medium font-vogun">KẾ THỪA DI SẢN - KIẾN TẠO TƯƠNG LAI</p>
           </div>
 
           {/* Right: Contact Info */}

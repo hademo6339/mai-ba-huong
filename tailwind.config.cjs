@@ -10,6 +10,7 @@ module.exports = {
       fontFamily: {
         sans: ['Manrope', 'sans-serif'],
         serif: ['Playfair Display', 'serif'],
+        vogun: ['Vogun', 'sans-serif'],
       },
       colors: {
         primary: {
