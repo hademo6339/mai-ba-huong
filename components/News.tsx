@@ -59,7 +59,7 @@ const News: React.FC = () => {
   const listNews = newsItems.slice(2);
 
   return (
-    <section id="tin-tuc" className="py-20 container mx-auto px-4 md:px-8">
+    <section id="tin-tuc" className="py-24 container mx-auto px-4 md:px-8">
       <div className="flex flex-col md:flex-row gap-10">
         {/* Vertical Label */}
         <div className="hidden md:flex w-12 flex-col items-center pt-10 border-r border-gray-100 mr-4">

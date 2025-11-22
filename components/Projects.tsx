@@ -54,7 +54,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="du-an" className="relative py-20 bg-white overflow-hidden">
+    <section id="du-an" className="relative py-24 bg-white overflow-hidden">
       <div className="container mx-auto px-4 md:px-8 flex gap-8">
         
         {/* Project Content Area */}

@@ -1,182 +1,305 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 interface ServiceData {
-  title: string;
-  subtitle: string;
+  titleMain: string;
+  titleSub: string;
   description: string;
   image: string;
 }
 
 const services: ServiceData[] = [
   {
-    title: "KINH DOANH BẤT ĐỘNG SẢN",
-    subtitle: "ĐẦU TƯ & PHÁT TRIỂN",
-    description: "Phát triển các dự án khu dân cư, khu đô thị với quy mô lớn, mang lại giá trị sinh lời bền vững cho nhà đầu tư.",
+    titleMain: "KINH DOANH",
+    titleSub: "BẤT ĐỘNG SẢN",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
     image: "https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
-    title: "TƯ VẤN, MÔI GIỚI, ĐẤU GIÁ",
-    subtitle: "QUYỀN SỬ DỤNG ĐẤT",
-    description: "Cung cấp giải pháp tư vấn chiến lược, môi giới chuyên nghiệp và tổ chức đấu giá quyền sử dụng đất minh bạch.",
+    titleMain: "TƯ VẤN, MÔI GIỚI",
+    titleSub: "ĐẤU GIÁ QUYỀN SỬ DỤNG ĐẤT",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
     image: "https://images.unsplash.com/photo-1556761175-5973dc0f32e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
-    title: "KIẾN TRÚC & TƯ VẤN KỸ THUẬT",
-    subtitle: "QUY HOẠCH & THIẾT KẾ",
-    description: "Hoạt động kiến trúc và tư vấn kỹ thuật có liên quan, kiến tạo không gian sống chuẩn mực và hiện đại.",
+    titleMain: "HOẠT ĐỘNG KIẾN TRÚC",
+    titleSub: "VÀ TƯ VẤN KỸ THUẬT CÓ LIÊN QUAN",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
     image: "https://images.unsplash.com/photo-1503387762-592deb58ef4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
-    title: "XÂY DỰNG CÔNG TRÌNH",
-    subtitle: "KỸ THUẬT DÂN DỤNG",
-    description: "Thi công xây dựng các công trình kỹ thuật dân dụng, hạ tầng đô thị với cam kết chất lượng và an toàn tuyệt đối.",
-    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "KHO BÃI & LƯU GIỮ",
-    subtitle: "LOGISTICS",
-    description: "Cung cấp dịch vụ kho bãi hiện đại, an toàn, đáp ứng nhu cầu lưu trữ và luân chuyển hàng hóa tối ưu.",
-    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-  },
-  {
-    title: "BỐC XẾP HÀNG HÓA",
-    subtitle: "VẬN HÀNH KHO",
-    description: "Dịch vụ bốc xếp hàng hóa chuyên nghiệp, nhanh chóng, đảm bảo an toàn cho hàng hóa của đối tác.",
+    titleMain: "BỐC XẾP",
+    titleSub: "HÀNG HOÁ",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
     image: "https://images.unsplash.com/photo-1553413077-190dd305871c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
-    title: "LẮP ĐẶT HỆ THỐNG ĐIỆN",
-    subtitle: "CƠ ĐIỆN M & E",
-    description: "Tư vấn, thiết kế và thi công lắp đặt hệ thống điện dân dụng và công nghiệp theo tiêu chuẩn quốc tế.",
+    titleMain: "KHO BÃI VÀ LƯU GIỮ",
+    titleSub: "HÀNG HOÁ",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
+    image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    titleMain: "XÂY DỰNG CÔNG TRÌNH",
+    titleSub: "KỸ THUẬT DÂN DỤNG KHÁC",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
+    image: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+  },
+  {
+    titleMain: "LẮP ĐẶT",
+    titleSub: "HỆ THỐNG ĐIỆN",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
     image: "https://images.unsplash.com/photo-1498084393753-b411b2d26b34?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   },
   {
-    title: "KHAI THÁC TÀI NGUYÊN",
-    subtitle: "ĐÁ, CÁT, SỎI, ĐẤT SÉT",
-    description: "Khai thác và chế biến khoáng sản, vật liệu xây dựng phục vụ cho các công trình trọng điểm.",
+    titleMain: "KHAI THÁC ĐÁ",
+    titleSub: "CÁT SỎI, ĐẤT SÉT",
+    description: "Lorem Ipsum đã được sử dụng như một văn bản chuẩn cho ngành công nghiệp in ấn từ những năm 1500, khi một họa sĩ vô danh ghép nhiều đoạn văn bản với nhau để tạo thành một bản mẫu văn bản. Đoạn văn",
     image: "https://images.unsplash.com/photo-1518655061710-5ccf392c275a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
   }
 ];
 
 const Services: React.FC = () => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const titleContainerRef = useRef<HTMLDivElement>(null);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const velocityRef = useRef(0);
+  const lastXRef = useRef(0);
+  const animationFrameRef = useRef<number | null>(null);
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = 380; // Approx card width + gap
-      const currentScroll = scrollContainerRef.current.scrollLeft;
-      const targetScroll = direction === 'left' 
-        ? currentScroll - scrollAmount 
-        : currentScroll + scrollAmount;
-      
-      scrollContainerRef.current.scrollTo({
-        left: targetScroll,
-        behavior: 'smooth'
+  // Sync scroll between title and cards with smooth animation
+  const handleScroll = () => {
+    if (scrollContainerRef.current && titleContainerRef.current) {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      animationFrameRef.current = requestAnimationFrame(() => {
+        if (titleContainerRef.current && scrollContainerRef.current) {
+          titleContainerRef.current.scrollLeft = scrollContainerRef.current.scrollLeft;
+        }
       });
     }
   };
 
+  // Smooth drag with momentum
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    const rect = scrollContainerRef.current.getBoundingClientRect();
+    setStartX(e.pageX - rect.left);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    lastXRef.current = e.pageX;
+    velocityRef.current = 0;
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    e.preventDefault();
+    const rect = scrollContainerRef.current.getBoundingClientRect();
+    const x = e.pageX - rect.left;
+    const walk = (x - startX) * 1.2; // Reduced multiplier for smoother, more natural drag
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    
+    // Calculate velocity for momentum
+    velocityRef.current = e.pageX - lastXRef.current;
+    lastXRef.current = e.pageX;
+    
+    handleScroll();
+  };
+
+  const handleMouseUp = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    // Apply smooth momentum scrolling for natural feel
+    if (scrollContainerRef.current && Math.abs(velocityRef.current) > 1) {
+      const momentum = velocityRef.current * 0.6;
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollBy({
+          left: -momentum,
+          behavior: 'smooth'
+        });
+      }
+    }
+    velocityRef.current = 0;
+  };
+
+  // Touch handlers for mobile with momentum
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (!scrollContainerRef.current) return;
+    setIsDragging(true);
+    const rect = scrollContainerRef.current.getBoundingClientRect();
+    setStartX(e.touches[0].pageX - rect.left);
+    setScrollLeft(scrollContainerRef.current.scrollLeft);
+    lastXRef.current = e.touches[0].pageX;
+    velocityRef.current = 0;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || !scrollContainerRef.current) return;
+    const rect = scrollContainerRef.current.getBoundingClientRect();
+    const x = e.touches[0].pageX - rect.left;
+    const walk = (x - startX) * 1.2; // Smoother drag
+    scrollContainerRef.current.scrollLeft = scrollLeft - walk;
+    
+    // Calculate velocity
+    velocityRef.current = e.touches[0].pageX - lastXRef.current;
+    lastXRef.current = e.touches[0].pageX;
+    
+    handleScroll();
+  };
+
+  const handleTouchEnd = () => {
+    if (!isDragging) return;
+    setIsDragging(false);
+    
+    // Apply smooth momentum scrolling for natural feel
+    if (scrollContainerRef.current && Math.abs(velocityRef.current) > 1) {
+      const momentum = velocityRef.current * 0.6;
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollBy({
+          left: -momentum,
+          behavior: 'smooth'
+        });
+      }
+    }
+    velocityRef.current = 0;
+  };
+
   return (
-    <section className="bg-[#004D40] pt-24 pb-32 relative overflow-hidden">
-       {/* Background Pattern / Watermark */}
-       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[120%] h-full pointer-events-none opacity-10">
-           <svg viewBox="0 0 1440 800" className="w-full h-full" preserveAspectRatio="none">
-               <path d="M-100 400 Q 300 100 720 400 T 1540 400" stroke="white" strokeWidth="1.5" fill="none" />
-               <path d="M-100 500 Q 300 200 720 500 T 1540 500" stroke="white" strokeWidth="1.5" fill="none" />
-               <path d="M720 100 Q 900 300 720 500 Q 540 300 720 100" stroke="white" strokeWidth="1.5" fill="none" />
-               <circle cx="720" cy="300" r="150" stroke="white" strokeWidth="1" fill="none" />
-           </svg>
-       </div>
+    <section className="relative overflow-hidden">
+      {/* Top Background - Dark Teal (60%) */}
+      <div className="absolute top-0 left-0 right-0 h-[60%] bg-[#004D40]">
+        {/* Subtle geometric pattern overlay */}
+        <div className="absolute inset-0 opacity-5 pointer-events-none">
+          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+            <defs>
+              <pattern id="services-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                <path d="M10 0 L20 10 L10 20 L0 10 Z" fill="none" stroke="#C4A980" strokeWidth="0.5"/>
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#services-pattern)"/>
+          </svg>
+        </div>
+      </div>
 
-      <div className="container mx-auto px-4 md:px-8 relative z-10">
+      {/* Bottom Background - White (40%) */}
+      <div className="absolute bottom-0 left-0 right-0 h-[40%] bg-white"></div>
+
+      <div className="container mx-auto px-4 md:px-8 lg:px-12 relative z-10 py-20 md:py-28">
         
-        {/* Header & Navigation Controls */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-12 gap-6">
-           <div>
-              <h2 className="text-white font-serif text-3xl md:text-5xl font-bold inline-block relative pb-4">
-                Lĩnh vực hoạt động
-                <span className="absolute bottom-0 left-0 w-[60%] h-1 bg-[#C4A980]"></span>
-              </h2>
-              <p className="text-gray-300 mt-4 max-w-xl text-sm font-light leading-relaxed">
-                Đa dạng hóa lĩnh vực hoạt động với mục tiêu kiến tạo hệ sinh thái bền vững, đóng góp vào sự thịnh vượng chung của cộng đồng.
-              </p>
-           </div>
-
-           {/* Navigation Buttons */}
-           <div className="flex gap-4">
-              <button 
-                onClick={() => scroll('left')}
-                className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#C4A980] hover:border-[#C4A980] transition-all duration-300 group"
-              >
-                <ChevronLeft size={24} className="group-hover:-translate-x-0.5 transition-transform" />
-              </button>
-              <button 
-                onClick={() => scroll('right')}
-                className="w-12 h-12 rounded-full border border-white/20 flex items-center justify-center text-white hover:bg-[#C4A980] hover:border-[#C4A980] transition-all duration-300 group"
-              >
-                <ChevronRight size={24} className="group-hover:translate-x-0.5 transition-transform" />
-              </button>
-           </div>
+        {/* Section Title - Scrollable with cards */}
+        <div 
+          ref={titleContainerRef}
+          className="text-left mb-12 md:mb-16 overflow-x-auto hide-scrollbar"
+          onScroll={handleScroll}
+          style={{ 
+            scrollBehavior: 'smooth',
+            WebkitOverflowScrolling: 'touch',
+            willChange: 'scroll-position'
+          }}
+        >
+          <h2 className="text-white font-serif text-2xl md:text-3xl lg:text-4xl font-bold inline-block whitespace-nowrap">
+            Lĩnh vực hoạt động
+          </h2>
         </div>
 
-        {/* Horizontal Slider Container */}
+        {/* Horizontal Scrollable Cards - Shows 4 initially, can scroll to see more */}
         <div 
           ref={scrollContainerRef}
-          className="flex gap-6 overflow-x-auto pb-12 hide-scrollbar snap-x snap-mandatory -mx-4 px-4 md:mx-0 md:px-0"
+          onMouseDown={handleMouseDown}
+          onMouseMove={handleMouseMove}
+          onMouseUp={handleMouseUp}
+          onMouseLeave={handleMouseUp}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+          onScroll={handleScroll}
+          className="flex gap-4 md:gap-6 overflow-x-auto hide-scrollbar cursor-grab active:cursor-grabbing relative -mt-8 md:-mt-12 pb-4"
+          style={{ 
+            scrollBehavior: 'auto',
+            WebkitOverflowScrolling: 'touch',
+            willChange: 'scroll-position',
+            overscrollBehavior: 'contain'
+          }}
         >
           {services.map((item, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
-              className="min-w-[300px] md:min-w-[360px] snap-start group relative cursor-pointer"
+              className="flex flex-col group flex-shrink-0"
+              style={{ 
+                width: 'calc((100% - 3 * 1.5rem) / 4)',
+                minWidth: '280px'
+              }}
             >
-              <div className="h-[450px] w-full overflow-hidden relative rounded-sm shadow-xl bg-[#00332A]">
-                {/* Image Layer */}
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80 group-hover:opacity-40"
-                />
+              {/* Card Container */}
+              <div className="flex flex-col h-full bg-white shadow-lg overflow-hidden">
                 
-                {/* Gradient Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#002822] via-[#004D40]/60 to-transparent opacity-90 group-hover:opacity-100 transition-opacity duration-500" />
-
-                {/* Number Indicator */}
-                <div className="absolute top-6 right-6 text-white/20 font-serif text-6xl font-bold group-hover:text-[#C4A980]/20 transition-colors">
-                  0{index + 1}
-                </div>
-
-                {/* Content Layer */}
-                <div className="absolute inset-0 p-8 flex flex-col justify-end">
+                {/* Header Area - Dark Teal Band with Pattern - NO HOVER CHANGE */}
+                <div className="bg-[#004D40] px-5 py-6 relative">
+                  {/* Pattern Overlay */}
+                  <div className="absolute inset-0 opacity-10 pointer-events-none">
+                    <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
+                      <defs>
+                        <pattern id={`card-pattern-${index}`} x="0" y="0" width="15" height="15" patternUnits="userSpaceOnUse">
+                          <path d="M7.5 0 L15 7.5 L7.5 15 L0 7.5 Z" fill="none" stroke="#C4A980" strokeWidth="0.5"/>
+                        </pattern>
+                      </defs>
+                      <rect width="100%" height="100%" fill={`url(#card-pattern-${index})`}/>
+                    </svg>
+                  </div>
                   
-                  <div className="transform transition-transform duration-500 translate-y-4 group-hover:translate-y-0">
-                    <div className="text-[10px] font-bold uppercase tracking-widest text-[#C4A980] mb-2 flex items-center gap-2">
-                       <span className="w-8 h-px bg-[#C4A980]"></span>
-                       {item.subtitle}
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-white uppercase leading-tight mb-4 font-serif">
-                       {item.title}
+                  <div className="relative z-10">
+                    {/* Title Main - Golden/Shiny with gradient effect - NO HOVER CHANGE */}
+                    <h3 
+                      className="font-serif font-bold text-lg md:text-xl uppercase leading-tight mb-2"
+                      style={{
+                        background: 'linear-gradient(135deg, #D4BFA0 0%, #C4A980 50%, #B39870 100%)',
+                        WebkitBackgroundClip: 'text',
+                        WebkitTextFillColor: 'transparent',
+                        backgroundClip: 'text',
+                        filter: 'drop-shadow(0 2px 4px rgba(196, 169, 128, 0.3))'
+                      }}
+                    >
+                      {item.titleMain}
                     </h3>
-
-                    <p className="text-gray-300 text-xs leading-relaxed line-clamp-3 group-hover:line-clamp-none group-hover:opacity-100 opacity-0 max-h-0 group-hover:max-h-[100px] transition-all duration-500 ease-in-out overflow-hidden mb-4">
-                       {item.description}
+                    {/* Title Sub - White, sans-serif - NO HOVER CHANGE */}
+                    <p className="text-white text-xs md:text-sm uppercase leading-tight font-sans">
+                      {item.titleSub}
                     </p>
-                    
-                    <button className="flex items-center gap-2 text-[11px] font-bold uppercase tracking-wider text-white group-hover:text-[#C4A980] transition-colors border-b border-transparent group-hover:border-[#C4A980] pb-1 w-fit">
-                        Xem chi tiết
-                        <ArrowUpRight size={14} />
-                    </button>
                   </div>
                 </div>
 
-                {/* Decorative Border on Hover */}
-                <div className="absolute inset-0 border border-[#C4A980] opacity-0 scale-95 group-hover:opacity-100 group-hover:scale-100 transition-all duration-500 pointer-events-none m-2"></div>
+                {/* Image Area */}
+                <div className="relative w-full h-52 md:h-60 overflow-hidden bg-gray-200">
+                  <img 
+                    src={item.image} 
+                    alt={item.titleMain} 
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  {/* Subtle overlay on hover */}
+                  <div className="absolute inset-0 bg-[#004D40]/0 group-hover:bg-[#004D40]/10 transition-all duration-500"></div>
+                </div>
+
+                {/* Description Area - Beige/Gold Box - CHANGES TO GREEN ON HOVER */}
+                <div className="bg-[#C4A980] px-5 py-6 flex-1 flex flex-col group-hover:bg-[#004D40] transition-colors duration-500">
+                  <p className="text-white text-xs md:text-sm leading-relaxed mb-5 flex-1">
+                    {item.description}
+                  </p>
+                  
+                  {/* CTA Button - Light white background, dark green text */}
+                  <button className="flex items-center gap-2 bg-[#E8E8E8] text-[#00332A] px-4 py-2.5 text-xs md:text-sm font-bold uppercase tracking-wider hover:bg-[#D4D4D4] transition-all duration-300 w-fit group/btn">
+                    Xem thêm
+                    <ArrowUpRight size={14} className="text-[#00332A] group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}

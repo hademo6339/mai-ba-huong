@@ -22,7 +22,7 @@ const partners = [
 
 const Partners: React.FC = () => {
   return (
-    <section className="bg-[#FAFAFA] py-20">
+    <section className="bg-[#FAFAFA] py-24">
         <div className="container mx-auto px-4 md:px-8">
             <div className="flex flex-col md:flex-row gap-12">
                 {/* Left Info */}
@@ -51,17 +51,17 @@ const Partners: React.FC = () => {
                 </div>
 
                 {/* Right Grid */}
-                <div className="w-full md:w-2/3 border border-gray-100 bg-white shadow-sm">
-                    <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y divide-gray-100">
+                <div className="w-full md:w-2/3 border border-gray-200 bg-white">
+                    <div className="grid grid-cols-2 sm:grid-cols-4 divide-x divide-y divide-gray-200">
                         {partners.map((partner) => (
                                 <div 
                                 key={partner.id} 
-                                className="h-32 p-6 flex items-center justify-center group relative transition-all duration-300 hover:shadow-[0_0_20px_rgba(0,0,0,0.05)] hover:z-10 bg-white"
+                                className="h-32 p-6 flex items-center justify-center group relative transition-all duration-300 hover:bg-gray-50 hover:z-10 bg-white"
                             >
                                 <img 
                                   src={partner.logo} 
                                   alt={partner.name} 
-                                  className="max-h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+                                  className="max-h-14 w-auto object-contain transition-transform duration-300 group-hover:scale-110 opacity-70 group-hover:opacity-100" 
                                 />
                             </div>
                         ))}

@@ -21,7 +21,7 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                className="text-accent font-serif text-4xl md:text-5xl mb-8 leading-tight"
+                className="text-accent font-serif text-4xl md:text-5xl lg:text-6xl mb-8 leading-[1.1] font-bold"
             >
                 TẦM NHÌN & <br/> SỨ MỆNH
             </motion.h2>
@@ -31,18 +31,18 @@ const About: React.FC = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="space-y-8 text-gray-text text-base leading-relaxed text-justify-last-left"
+                className="text-justify-last-left"
             >
-                <div>
-                    <h3 className="text-primary font-bold uppercase text-lg mb-2">Tầm Nhìn</h3>
-                    <p>
+                <div className="mb-8">
+                    <h3 className="text-primary font-bold uppercase text-lg mb-3">TẦM NHÌN</h3>
+                    <p className="text-gray-text leading-[1.8] text-[15px]">
                     Trở thành Nhà phát triển bất động sản uy tín và kiến tạo các giá trị tiên phong, những không gian sống chuẩn mực, bền vững mang đậm dấu ấn văn hóa. Với niềm đam mê, tinh thần chính trực cùng với tâm huyết của cả tập thể và với khát vọng vươn xa, Mai Bá Hương sẽ không ngừng đóng góp cho diện mạo đô thị Việt Nam hiện đại, văn minh và thịnh vượng hơn.
                     </p>
                 </div>
                 <div>
-                    <h3 className="text-primary font-bold uppercase text-lg mb-2">Sứ Mệnh</h3>
-                    <p className="italic text-gray-600 font-medium mb-2">“Kiến tạo giá trị sống bền vững – Gắn kết con người và cộng đồng.”</p>
-                    <p>
+                    <h3 className="text-primary font-bold uppercase text-lg mb-3">SỨ MỆNH</h3>
+                    <p className="italic text-gray-600 font-medium mb-3 text-[15px] leading-[1.8]">"Kiến tạo giá trị sống bền vững – Gắn kết con người và cộng đồng."</p>
+                    <p className="text-gray-text leading-[1.8] text-[15px]">
                     Vì bất động sản không chỉ là ngành nghề, mà là nghệ thuật của sự gắn kết – nơi mỗi mét vuông đất đều ẩn chứa hơi thở của cuộc sống, của hạnh phúc và ước mơ. Công ty CP Mai Bá Hương đặt con người làm trung tâm cho mọi phát triển, để mỗi công trình không chỉ là nơi ở, mà là nơi vun đắp hạnh phúc và nuôi dưỡng giá trị sống đích thực.
                     </p>
                 </div>
@@ -85,18 +85,17 @@ const About: React.FC = () => {
 
         {/* 5 Core Values */}
         <div className="pt-12 border-t border-gray-100">
-             <div className="text-center mb-12">
-                 <span className="text-accent font-bold tracking-widest text-xs uppercase mb-2 block">Giá trị cốt lõi</span>
-                 <h3 className="text-3xl font-serif text-primary font-bold">5 TRỤ CỘT PHÁT TRIỂN</h3>
+             <div className="text-center mb-16">
+                 <h3 className="text-3xl md:text-4xl font-serif text-primary font-bold mb-2">5 TRỤ CỘT PHÁT TRIỂN</h3>
              </div>
 
-             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6">
+             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
                 {[
-                    { icon: <Gem size={28}/>, title: "Kế thừa di sản", desc: "Trân trọng và gìn giữ những giá trị văn hóa Việt Nam trong từng dự án." },
-                    { icon: <Sprout size={28}/>, title: "Kiến tạo tương lai", desc: "Đổi mới tư duy, áp dụng chuẩn mực quốc tế, hài hoà giữa thiên nhiên và tiện ích." },
-                    { icon: <ShieldCheck size={28}/>, title: "Chính trực & Uy tín", desc: "Giữ trọn niềm tin trong mọi cam kết và hợp tác." },
-                    { icon: <CheckCircle2 size={28}/>, title: "Chất lượng & Bền vững", desc: "Kiến tạo chuẩn mực sống cao cấp, thân thiện môi trường, giá trị lâu dài." },
-                    { icon: <HeartHandshake size={28}/>, title: "Đồng hành & Gắn kết", desc: "Cùng đối tác, khách hàng và cộng đồng phát triển thịnh vượng." }
+                    { icon: <Gem size={32}/>, title: "Kế thừa di sản", desc: "Trân trọng và gìn giữ những giá trị văn hóa Việt Nam trong từng dự án." },
+                    { icon: <Sprout size={32}/>, title: "Kiến tạo tương lai", desc: "Đổi mới tư duy, áp dụng chuẩn mực quốc tế, hài hoà giữa thiên nhiên và tiện ích." },
+                    { icon: <ShieldCheck size={32}/>, title: "Chính trực & Uy tín", desc: "Giữ trọn niềm tin trong mọi cam kết và hợp tác." },
+                    { icon: <CheckCircle2 size={32}/>, title: "Chất lượng & Bền vững", desc: "Kiến tạo chuẩn mực sống cao cấp, thân thiện môi trường, giá trị lâu dài." },
+                    { icon: <HeartHandshake size={32}/>, title: "Đồng hành & Gắn kết", desc: "Cùng đối tác, khách hàng và cộng đồng phát triển thịnh vượng." }
                 ].map((val, idx) => (
                     <motion.div 
                         key={idx}
@@ -104,11 +103,11 @@ const About: React.FC = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: idx * 0.1 }}
-                        className="bg-gray-50 p-6 hover:bg-primary hover:text-white transition-all duration-300 group rounded-sm border-b-2 border-transparent hover:border-accent"
+                        className="bg-gray-50 p-8 hover:bg-primary hover:text-white transition-all duration-300 group"
                     >
-                        <div className="text-accent mb-4 group-hover:text-white transition-colors">{val.icon}</div>
-                        <h4 className="font-serif font-bold text-lg mb-3 leading-tight">{val.title}</h4>
-                        <p className="text-xs leading-relaxed text-gray-600 group-hover:text-gray-200">{val.desc}</p>
+                        <div className="text-accent mb-6 group-hover:text-white transition-colors flex items-start">{val.icon}</div>
+                        <h4 className="font-serif font-bold text-lg mb-4 leading-tight">{val.title}</h4>
+                        <p className="text-sm leading-[1.7] text-gray-600 group-hover:text-gray-200">{val.desc}</p>
                     </motion.div>
                 ))}
              </div>

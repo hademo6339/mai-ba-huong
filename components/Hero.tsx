@@ -39,9 +39,9 @@ const Hero: React.FC = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 1, delay: 0.2 }}
-              className="text-white font-serif font-bold text-3xl md:text-5xl lg:text-[70px] xl:text-[80px] uppercase tracking-wide leading-none w-full text-center md:text-left drop-shadow-lg"
+              className="text-white font-serif font-bold text-3xl md:text-5xl lg:text-[70px] xl:text-[80px] uppercase tracking-[0.02em] leading-[1.1] w-full text-center md:text-left drop-shadow-lg"
             >
-              Kế thừa di sản - <br className="lg:hidden" /> Kiến tạo tương lai
+              KẾ THỪA DI SẢN - <br className="lg:hidden" /> KIẾN TẠO TƯƠNG LAI
             </motion.h1>
 
             {/* Down Arrow - Thin SVG arrow as per design */}

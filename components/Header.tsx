@@ -26,7 +26,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled }) => {
       <div className="container mx-auto px-4 md:px-8 h-full flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="flex items-center shrink-0">
-           <img src={LogoNgang} alt="Mai Bá Hương" className="h-10 md:h-12 w-auto object-contain" />
+           <img src={LogoNgang} alt="Mai Bá Hương" className="h-12 md:h-14 w-auto object-contain" />
         </a>
 
         {/* Desktop Navigation */}

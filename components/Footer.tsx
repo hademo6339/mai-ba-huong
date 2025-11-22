@@ -53,7 +53,7 @@ const Footer: React.FC = () => {
                 />
               </div>
               <button className="bg-[#E8E8E8] text-[#00332A] px-6 py-2 text-xs font-bold uppercase hover:bg-[#C4A980] hover:text-white transition-all flex items-center gap-2 mt-2 rounded-sm">
-                Xem thêm
+                Gửi
                 <ArrowUpRight size={14} />
               </button>
             </form>
