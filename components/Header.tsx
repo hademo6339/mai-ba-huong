@@ -23,14 +23,14 @@ const Header: React.FC<HeaderProps> = ({ scrolled }) => {
     <header 
       className="fixed top-0 left-0 right-0 z-50 bg-white shadow-sm h-[80px] md:h-[90px] transition-all duration-300"
     >
-      <div className="container mx-auto px-4 md:px-8 h-full flex justify-between items-center">
+      <div className="container mx-auto px-6 md:px-12 lg:px-16 xl:px-20 h-full flex justify-between items-center">
         {/* Logo */}
         <a href="#" className="flex items-center shrink-0">
            <img src={LogoNgang} alt="Mai Bá Hương" className="h-12 md:h-14 w-auto object-contain" />
         </a>
 
         {/* Desktop Navigation */}
-        <nav className="hidden xl:flex items-center space-x-8 text-[13px] font-medium text-gray-600">
+        <nav className="hidden xl:flex items-center space-x-8 text-xs lg:text-sm xl:text-[13px] font-medium text-gray-600">
           {navItems.map((item) => (
             <a 
               key={item.label} 
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({ scrolled }) => {
         </nav>
 
         {/* Actions */}
-        <div className="hidden xl:flex items-center space-x-6 text-xs font-medium text-gray-500">
+        <div className="hidden xl:flex items-center space-x-6 text-[10px] lg:text-xs font-medium text-gray-500">
           <div className="flex items-center cursor-pointer space-x-1 hover:text-[#004D40] transition-colors">
             <span>VN</span>
             <ChevronDown size={12} />

@@ -54,15 +54,23 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="du-an" className="relative py-24 bg-white overflow-hidden">
-      <div className="container mx-auto px-4 md:px-8 flex gap-8">
-        
-        {/* Project Content Area */}
-        <div 
-          className="flex-1 relative"
-          onMouseEnter={() => setIsPaused(true)}
-          onMouseLeave={() => setIsPaused(false)}
-        >
+    <section id="du-an" className="relative py-24 md:py-32 bg-white overflow-hidden">
+      <div className="container mx-auto px-4 md:px-8">
+        <div className="flex flex-col md:flex-row gap-8 lg:gap-16">
+          
+          {/* Vertical Label - Left Sidebar */}
+          <div className="hidden md:flex w-8 md:w-12 flex-col items-center border-r border-gray-100 pt-10">
+            <span className="writing-vertical text-[11px] uppercase tracking-[0.3em] text-primary font-bold whitespace-nowrap rotate-180">
+              Dự án nổi bật
+            </span>
+          </div>
+
+          {/* Project Content Area */}
+          <div 
+            className="flex-1 relative"
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
            {/* Main Layout: Image Left, Content Box Right Overlapping */}
            <div className="relative min-h-[500px] md:h-[650px] w-full flex flex-col md:block group">
              
@@ -159,15 +167,8 @@ const Projects: React.FC = () => {
               ))}
            </div>
 
+          </div>
         </div>
-
-        {/* Vertical Label - Right Sidebar */}
-        <div className="hidden md:flex w-8 md:w-12 flex-col items-center border-l border-gray-100 pt-10 relative">
-           <span className="writing-vertical text-[11px] uppercase tracking-[0.3em] text-gray-500 font-bold whitespace-nowrap rotate-180 sticky top-24">
-             Dự án nổi bật
-           </span>
-        </div>
-
       </div>
     </section>
   );
