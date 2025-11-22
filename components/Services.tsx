@@ -1,6 +1,7 @@
 import React, { useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowUpRight } from 'lucide-react';
+import LogoMain from '../LogoMain.svg';
 
 interface ServiceData {
   titleMain: string;
@@ -173,16 +174,13 @@ const Services: React.FC = () => {
     <section className="relative overflow-hidden">
       {/* Top Background - Dark Teal (60%) */}
       <div className="absolute top-0 left-0 right-0 h-[60%] bg-[#004D40]">
-        {/* Subtle geometric pattern overlay */}
-        <div className="absolute inset-0 opacity-5 pointer-events-none">
-          <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <pattern id="services-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                <path d="M10 0 L20 10 L10 20 L0 10 Z" fill="none" stroke="#C4A980" strokeWidth="0.5"/>
-              </pattern>
-            </defs>
-            <rect width="100%" height="100%" fill="url(#services-pattern)"/>
-          </svg>
+        {/* Background Logo */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none flex items-center justify-center">
+          <img 
+            src={LogoMain} 
+            alt="Logo Background" 
+            className="w-full h-full object-cover"
+          />
         </div>
       </div>
 

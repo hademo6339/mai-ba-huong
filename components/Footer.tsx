@@ -1,20 +1,18 @@
 import React from 'react';
 import { ArrowUpRight, Phone, Mail, Globe, Facebook, Youtube, Instagram } from 'lucide-react';
 import IconLogo from '../IconLogo.svg';
+import LogoMain from '../LogoMain.svg';
 
 const Footer: React.FC = () => {
   return (
     <footer id="lien-he" className="bg-[#00332A] text-white pt-20 pb-8 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5 pointer-events-none">
-         <svg width="100%" height="100%" viewBox="0 0 100 100" preserveAspectRatio="none">
-             <defs>
-                 <pattern id="footer-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                     <path d="M10 0 L20 10 L10 20 L0 10 Z" fill="none" stroke="white" strokeWidth="0.5"/>
-                 </pattern>
-             </defs>
-             <rect width="100%" height="100%" fill="url(#footer-pattern)"/>
-         </svg>
+      {/* Background Logo */}
+      <div className="absolute inset-0 opacity-[0.08] pointer-events-none flex items-center justify-center">
+         <img 
+           src={LogoMain} 
+           alt="Logo Background" 
+           className="w-full h-full object-cover"
+         />
       </div>
       
       {/* Gradient Overlay */}
