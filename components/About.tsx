@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { ArrowUpRight, CheckCircle2, Gem, HeartHandshake, ShieldCheck, Sprout } from 'lucide-react';
+import { ArrowUpRight } from 'lucide-react';
 
 const About: React.FC = () => {
   return (
@@ -81,36 +81,6 @@ const About: React.FC = () => {
                 />
             </motion.div>
             </div>
-        </div>
-
-        {/* 5 Core Values */}
-        <div className="pt-12 border-t border-gray-100">
-             <div className="text-center mb-16">
-                 <h3 className="text-3xl md:text-4xl font-serif text-primary font-bold mb-2">5 TRỤ CỘT PHÁT TRIỂN</h3>
-             </div>
-
-             <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8">
-                {[
-                    { icon: <Gem size={32}/>, title: "Kế thừa di sản", desc: "Trân trọng và gìn giữ những giá trị văn hóa Việt Nam trong từng dự án." },
-                    { icon: <Sprout size={32}/>, title: "Kiến tạo tương lai", desc: "Đổi mới tư duy, áp dụng chuẩn mực quốc tế, hài hoà giữa thiên nhiên và tiện ích." },
-                    { icon: <ShieldCheck size={32}/>, title: "Chính trực & Uy tín", desc: "Giữ trọn niềm tin trong mọi cam kết và hợp tác." },
-                    { icon: <CheckCircle2 size={32}/>, title: "Chất lượng & Bền vững", desc: "Kiến tạo chuẩn mực sống cao cấp, thân thiện môi trường, giá trị lâu dài." },
-                    { icon: <HeartHandshake size={32}/>, title: "Đồng hành & Gắn kết", desc: "Cùng đối tác, khách hàng và cộng đồng phát triển thịnh vượng." }
-                ].map((val, idx) => (
-                    <motion.div 
-                        key={idx}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true }}
-                        transition={{ delay: idx * 0.1 }}
-                        className="bg-gray-50 p-8 hover:bg-primary hover:text-white transition-all duration-300 group"
-                    >
-                        <div className="text-accent mb-6 group-hover:text-white transition-colors flex items-start">{val.icon}</div>
-                        <h4 className="font-serif font-bold text-lg mb-4 leading-tight">{val.title}</h4>
-                        <p className="text-sm leading-[1.7] text-gray-600 group-hover:text-gray-200">{val.desc}</p>
-                    </motion.div>
-                ))}
-             </div>
         </div>
       </div>
     </section>
